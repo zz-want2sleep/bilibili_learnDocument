@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+<!-- 在使用vue的data中的变量的时候，不会去看使用的是哪个组件，而是去看这个变量在哪一个 模板 里面 -->
+
+<div id="app">
+  <cpn v-show="isShow"></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <slot></slot>
+    <button v-show="isShow">看不见</button>
+  </div>
+</template>
+<script>
+const vue = new Vue({
+el: "#app",
+ data: {
+  isShow: true,
+  message: "张哲",
+ },
+
+ components: {
+   cpn: {
+    template: "#cpn",
+    data(){
+      return {
+        isShow: fasle,
+      };
+    }
+        }
+ }
+ });
+ </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <style>
+      .active {
+        color: red;
+      }
+    </style>
+    <div id="app">
+      <!-- 对象语法，通过v-bind绑定class后 -->
+      <!-- 对象的形式进行控制类名是否显示
+  {类名1:boolean,类名2:boolean} -->
+
+      <!-- 除了动态绑定class，还可以写一个固定的class，vue会帮我们解析后进行合并 -->
+      <!-- v-bind对象语法，如果太长可以使用computed或methods进行简化 -->
+      <h2 v-bind:class="{active:isActive,line:isLine}">
+        {{this.$data.message+"今天星期天"}}
+      </h2>
+      <h2 :class="{active:this.$data.isActive,line:this.$data.isLine}">{{this.$data.message}}</h2>
+      <button @click="changeBoolean">改变样式</button>
+      <!-- 除了@(v-on)调用methods无参方法时省略了（）外，其他指令都应该加上（）-->
+      <h2 :class="getActive()">{{this.$data.message}}</h2>
+
+      <!-- <button v-on:click="changeBoolean">改变样式</button> -->
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+          isActive: true,
+          isLine: true,
+        },
+        methods: {
+          changeBoolean: function () {
+            this.isActive = !this.isActive;
+            this.isLine = !this.isLine;
+          },
+          getActive: function () {
+            return { active: this.isActive, line: this.isLine };
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

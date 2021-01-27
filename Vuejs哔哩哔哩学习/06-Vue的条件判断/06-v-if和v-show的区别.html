@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-if如果为false 则该包含v-if的DOM元素压根就不会存在 -->
+      <div v-if="isShow" id="aaa">Vue 的v-if</div>
+      <!-- v-show如果为false,则包含v-show的DOM元素只是会添加一个行内样式display:none；元素本身依然存在 -->
+      <div v-show="isShow" id="bbb">Vue 的v-show</div>
+
+      <!-- 如何选择使用v-if还是v-show呢？DOM元素多次显示和隐藏时使用v-show提高性能，
+通常是使用v-if来判断服务器传过来的值，只变化一次所以如果v-if为false则可以省去大量DOM元素创建提高性能。-->
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+          isShow: false,
+        },
+      });
+    </script>
+  </body>
+</html>

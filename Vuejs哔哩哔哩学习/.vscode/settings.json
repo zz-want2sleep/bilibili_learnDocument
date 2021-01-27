@@ -1,0 +1,77 @@
+{
+  "files.exclude": {
+    "node_modules/": true
+  },
+  // "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.autoClosingBrackets": "always",
+  "window.zoomLevel": 0,
+  "terminal.integrated.rendererType": "dom",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.tabSize": 2,
+  "files.associations": {
+    "*.vue": "vue"
+  },
+  "eslint.autoFixOnSave": true,
+  "eslint.options": {
+    "extensions": [
+      ".js",
+      ".vue"
+    ]
+  },
+  "eslint.validate": [
+    "javascript",
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    "html",
+    "vue"
+  ],
+  "search.exclude": {
+    "**/bower_components": true,
+    "**/dist": true
+  },
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx",
+    "vue": "html",
+    "vue-html": "html"
+  },
+  "git.confirmSync": false,
+  // "window.zoomLevel": 0,
+  "editor.renderWhitespace": "boundary",
+  "editor.cursorBlinking": "smooth",
+  "editor.minimap.enabled": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.fontFamily": "'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
+  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+  "editor.codeLens": true,
+  "editor.snippetSuggestions": "top",
+  "workbench.colorTheme": "One Dark Pro",
+  "auto-close-tag.excludedTags": [
+
+    "area",
+    "base",
+    "br",
+    "col",
+    "command",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "keygen",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr"
+  ],
+  "gitlens.advanced.blame.customArguments": [],
+  "compile-hero.disable-compile-files-on-did-save-code": false,
+  "search.useGlobalIgnoreFiles": true,
+}

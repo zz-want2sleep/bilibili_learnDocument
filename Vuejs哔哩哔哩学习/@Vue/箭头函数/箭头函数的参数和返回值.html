@@ -1,0 +1,39 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-09-20 22:31:58
+ * @LastEditTime: 2020-09-20 22:41:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \哔哩哔哩学习文档\Vuejs哔哩哔哩学习\@Vue\箭头函数\箭头函数的参数和返回值.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //1.参数问题
+    //1.1 放入两个参数
+    const sum = (num1, num2) => {
+        return num1 + num2
+    }
+    // 1.2 放入一个参数
+    const sum1 = num => {
+        return num
+    }
+    //2.函数中
+    //2.1 函数代码块中有多行代码
+    const tol = () => {
+        console.log('hello world')
+        console.log('hello vuejs')
+    }
+    //2.2 函数代码块中只有一行代码 省略{}相当于{return xxx}
+    const mul = (num1) => num1 * 3
+    console.log(mul())
+</script>
+</body>
+</html>

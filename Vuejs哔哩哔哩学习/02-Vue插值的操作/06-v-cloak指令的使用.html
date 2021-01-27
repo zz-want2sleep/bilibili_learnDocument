@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <style>
+      [v-cloak] {
+        display: none;
+        /* visibility: hidden; */
+      }
+    </style>
+    <div id="app">
+      <!-- 当js加载卡住了的时候会出现数据 闪动 的现象，使用v-cloak斗篷指令，配合style属性选择器进行操作，可以遮掩js未加载前的mustache语法，让其不显示出来。 -->
+      <!-- 在vue实例解析DOM 之前 存在v-cloak这一属性 -->
+      <!-- 在vue实例解析DOM 之后 就不存在v-cloak这一属性 -->
+      <!--需要配合mustache语法使用 -->
+      <h2>js卡住了</h2>
+      <h2 v-cloak>{{message}}</h2>
+    </div>
+
+    <script>
+      setTimeout(() => {
+        const vue = new Vue({
+          el: "#app",
+          data: {
+            message: "hello",
+          },
+        });
+      }, 1000);
+    </script>
+  </body>
+</html>

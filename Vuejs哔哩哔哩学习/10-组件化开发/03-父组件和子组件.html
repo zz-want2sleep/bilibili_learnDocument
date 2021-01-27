@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<cpn2></cpn2>
+</div>
+
+<script>
+    // 子组件
+const cpn1 = Vue.extend({
+    template: `<div>这是组件一
+    <p>话说今天星期六</p>
+    </div>`
+});
+// 父组件
+const cpn2 = Vue.extend({
+    template: `<div>这是组件二
+    <p>话说今天星期六</p>
+    <cpn1></cpn1>
+    </div>
+    `,
+    components:{cpn1: cpn1}
+});
+// 根组件
+const vue = new Vue({
+el: "#app",
+ data: {
+  message: "张哲",
+ },
+ components: {'cpn2': cpn2}
+ });
+ </script>
+</body>
+</html>

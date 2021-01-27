@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <span class="info"></span>
+      <button>按钮1</button>
+      <button>按钮2</button>
+      <button>按钮3</button>
+      <button>按钮4</button>
+      <button>按钮5</button>
+    </div>
+
+    <script>
+      var buttons = document.getElementsByTagName("button");
+      console.log(document.getElementsByClassName("info")[0]);
+      // for (var i = 0; i < buttons.length; i++) {
+      // console.log(buttons[i]);
+      // buttons[i].addEventListener("click", function () {
+      //   console.log(11122);
+      //   document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+      // });
+      // es5闭包解决   无块级作用域的  问题
+      // (function () {
+      //  var i = i;
+      //   console.log(i);
+      //   buttons[i].addEventListener("click", function () {
+      //     console.log("nihaoya1");
+      //     document.getElementsByClassName("info")[0].innerHTML =
+      //       "触发按钮" + i;
+      //   });
+      // })(i);
+      // }
+
+      // es6直接在for的块级作用域使用let就可以了let存在块级作用域，外部变量做的修改对内部定义的变量是没有意义的，两者的作用域不同，外部不能直接调用内部定义的变量
+      // for (let i = 0; i < buttons.length; i++) {
+      // buttons[i].addEventListener("click", function () {
+      //   document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+      // });
+      // }
+      // 相当于，let定义的变量具有块级作用域
+      // // ES6 ===============
+      let i;
+      {
+        let i = 0;
+        buttons[i].addEventListener("click", function () {
+          document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+        });
+      }
+      {
+        let i = 1;
+        console.log(buttons[i]);
+        buttons[i].addEventListener("click", function () {
+          document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+        });
+        console.log(buttons[i]);
+      }
+      {
+        let i = 2;
+        console.log(buttons[i]);
+        buttons[i].addEventListener("click", function () {
+          document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+        });
+      }
+      {
+        let i = 3;
+        buttons[i].addEventListener("click", function () {
+          console.log(i);
+          document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+        });
+      }
+
+      // ES5
+      // {
+      //   var i = 0;
+      //   buttons[i].addEventListener("click", function () {
+      //     document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+      //   });
+      // }
+      // {
+      //   i = 1;
+      //   buttons[i].addEventListener("click", function () {
+      //     document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+      //   });
+      // }
+      // {
+      //   i = 2;
+      //   buttons[i].addEventListener("click", function () {
+      //     document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+      //   });
+      // }
+      // {
+      //   i = 3;
+      //   buttons[i].addEventListener("click", function () {
+      //     document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+      //   });
+      // }
+
+      // });
+      // }
+      // const vue = new Vue({
+      //   el: "#app",
+      //   data: {
+      //     message: "张哲",
+      //   },
+      // });
+    </script>
+  </body>
+</html>

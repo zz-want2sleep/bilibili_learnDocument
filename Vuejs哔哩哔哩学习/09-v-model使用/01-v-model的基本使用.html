@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<form action="">
+  <input type="text" name="" id="" v-model="message">
+  {{message}}
+</form>
+
+</div>
+ 
+<script>
+const vue = new Vue({
+el: "#app", 
+ data: {
+  message: "张哲",
+ },
+ });
+ </script>
+</body>
+</html>

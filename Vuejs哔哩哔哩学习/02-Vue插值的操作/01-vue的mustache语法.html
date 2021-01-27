@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>page Title</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{message + name}}</h2>
+      <h2>{{message + " " + name}}</h2>
+      <h2>{{message}} {{name}}</h2>
+      <h2>{{counter * 2}}</h2>
+      <h2>{{counter - 1}}</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "学习",
+          name: "尤雨溪的vue",
+          counter: 100,
+        },
+      });
+    </script>
+  </body>
+</html>

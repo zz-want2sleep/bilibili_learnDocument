@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn ref="zz"></cpn>
+    <button @click="clickBtn">点击</button>
+</div>
+ <template id="cpn">
+    <div>
+         <p>子组件</p>
+    </div>
+ </template>
+<script>
+const vue = new Vue({
+el: "#app",
+ data: {
+  message: "张哲",
+ },
+  components:{
+      cpn: {
+          template: "#cpn",
+          data(){
+              return {
+                  name: '这是一个子组件'
+              }
+          },
+          methods: {
+              showMessage(){
+                  console.log('hello world！')
+              }
+          }
+      }
+  },
+  methods: {
+    clickBtn(){
+        // console.log(this.$children)一般不怎么使用$children,除非需要拿到所有的子组件，否则一般使用$refs拿到指定的子组件（虽然$children也可以通过index索引拿到指定的子组件，但是可能会发生变化，例如插入新的子组件）。
+        // $children返回的是一个数组，$refs返回的是一个对象
+        // this.$children[0].showMessage();
+        // 使用$refs一定要在子组件标签上面使用ref指令
+        console.log(this.$refs.zz.name);
+    }
+  }
+ });
+ </script>
+</body>
+</html>

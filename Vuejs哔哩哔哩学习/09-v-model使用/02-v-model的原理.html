@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+<!-- 除了使用@input="valueChange"方法还可以使用$event -->
+<div id="app">
+<input type="text" name="" id="" :value="message" 
+@input="message = $event.target.value"
+>
+<h2>{{message}}</h2>
+</div>
+ <!-- v-model绑定一个value属性
+v-on指令给当前元素绑定input事件 -->
+<script>
+const vue = new Vue({
+el: "#app", 
+ data: {
+  message: "张哲",
+ },
+ methods:{
+   valueChange(e){
+     this.message = e.target.value;
+   }
+ }
+ });
+ </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <style>
+      .fontSize {
+        font-size: 50px;
+      }
+    </style>
+    <div id="app">
+      <!-- v-bind动态绑定class和style有一个共同的特性，vue语法，与原生态的css语法不太一样，特别是使用对象语法时，使用k-v对象， key值 是 不需要 打上 '' 单引号的，但是 value值 是需要 加上 '' 单引号 的。 -->
+      <!-- value值如果不加上 '' 单引号会被当做变量在vue中查询 -->
+      <h2 :class="{fontSize:'fontSize'}">{{message}}</h2>
+      <h2 :style="{'fontSize': '50px','color': 'red',backgroundColor: 'blue'}">
+        {{message}}
+      </h2>
+      <h2 :style="{fontSize:fontSize,color:color}">{{message}}</h2>
+      <h2 :style="getStyle()">{{message}}</h2>
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+          fontSize: "50px",
+          color: "red",
+          backgroundColor: "black",
+        },
+        methods: {
+          getStyle: function () {
+            return { fontSize: "50px", color: "red", backgroundColor: "blue" };
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

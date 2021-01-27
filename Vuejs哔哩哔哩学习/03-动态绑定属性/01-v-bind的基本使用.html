@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta name="referrer" content="no-referrer" />
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 通常是用在a元素的href属性和img元素的src属性中 -->
+      <!-- 在属性里面无法使用{{}}mustache语法在vue实例的data中进行取值 -->
+      <!-- 通过v-bind指令将其属性值设置为动态取值 -->
+      <img v-bind:src="imgURL" alt="随便一张图" />
+      <a v-bind:href="aURL">百度一下</a>
+
+      <!-- v-bind的语法糖为 : 给点甜头-->
+      <img :src="imgURL" alt="随便一张图" />
+      <a :href="aURL">百度一下</a>
+    </div>
+
+    <script>
+      let vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+          imgURL:
+            "https://i0.hdslb.com/bfs/archive/55278106e726f7a870ccd7aeb8247282e480ba21.jpg@880w_388h_1c_95q",
+          aURL: "https://www.baidu.com",
+        },
+      });
+    </script>
+  </body>
+</html>

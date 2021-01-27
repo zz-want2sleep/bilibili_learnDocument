@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<!-- CheckBox单选框 -->
+<!-- <label for="agree">同意协议</label>
+<input type="checkbox" name="" id="agree" v-model="isAgree">
+<button :disabled="!isAgree">下一步</button> -->
+<!-- checkbox多选框 -->
+<!-- <label for="bask">篮球</label><input type="checkbox" value="篮球" id="bask" v-model="hobbies">
+<label for="soc">足球</label>
+<input type="checkbox" value="足球" id="soc" v-model="hobbies">
+<label for="pingpong">乒乓球</label>
+<input type="checkbox" value="乒乓球" id="pingpong" v-model="hobbies">
+<label for="yumao">羽毛球</label>
+<input type="checkbox" value="羽毛球" id="yumao" v-model="hobbies"> -->
+<!-- <h2>你选择的是{{isAgree}}</h2>  -->
+<h2>你选择的是{{hobbies}}</h2> 
+<!-- 单选和多选v-model绑定的变量分别使用boolean和数组 -->
+
+<!-- 动态绑定值-值绑定-v-bind的应用 -->
+<label v-for="item in originHobbies" :for="item">
+    <input type="checkbox" name="" :id="item" :value="item" v-model="hobbies">{{item}}
+</label>
+
+
+</div>
+<script>
+const vue = new Vue({
+el: "#app", 
+ data: {
+  message: "张哲",
+  isAgree: false,//单选框
+  hobbies: [],//多选框
+  originHobbies: ['篮球','足球','乒乓球','羽毛球','台球','高尔夫球']
+ },
+ });
+ </script>
+</body>
+</html>

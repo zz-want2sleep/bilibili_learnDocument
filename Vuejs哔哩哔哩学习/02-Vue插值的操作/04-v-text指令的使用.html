@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-text指令与mustache语法类似，但是v-text指令会覆盖元素中原有的值 -->
+      <h2>{{message}},你好呀！</h2>
+      <h2 v-text="message">你好呀！</h2>
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+        },
+      });
+    </script>
+  </body>
+</html>

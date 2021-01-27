@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 跳过vue实例（vm）的编译，直接显示mustache语法的{{}}双大括号 -->
+      <h2>{{message}}</h2>
+      <h2 v-pre>{{message}}</h2>
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <span class="info"></span>
+      <button>按钮1</button>
+      <button>按钮2</button>
+      <button>按钮3</button>
+      <button>按钮4</button>
+      <button>按钮5</button>
+    </div>
+
+    <script>
+      // es5及es5之前是没有块级作用域的，只有全局作用域和函数作用域，也就是说，if、for以及switch等块级代码块中定义的var可以被外部引用
+      // es6则有了let、const等一些需要定义后才能使用（虽然还有着变量提升，但是多了死区这个概念，所以不能被初始化，不是undefined，而是会报错了。
+      // ES6的let、const等重点 多了块级作用域 实际使用中，简化了代码开发。
+      // 例如以前for循环添加事件时，使用var时，在使用之前，var定义的变量就已经被改变了，做的事就不符合我们的预期(而解决方案，使用闭包，用立即执行函数，利用es5的函数作用域来进行hack)
+      var buttons = document.getElementsByTagName("button");
+      console.log(document.getElementsByClassName("info")[0]);
+      for (var i = 0; i < buttons.length; i++) {
+        // console.log(buttons[i]);
+        // buttons[i].addEventListener("click", function () {
+        //   console.log(11122);
+        //   document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+        // });
+        // es5闭包解决无块级作用域的问题
+        // (function (i) {
+        //   console.log(i);
+        //   buttons[i].addEventListener("click", function () {
+        //     console.log("nihaoya1");
+        //     document.getElementsByClassName("info")[0].innerHTML =
+        //       "触发按钮" + i;
+        //   });
+        // })(i);
+      }
+
+      // es6直接在for的块级作用域使用let就可以了let存在块级作用域，外部变量做的修改对内部定义的变量是没有意义的，两者的作用域不同，外部不能直接调用内部定义的变量
+      // for (let i = 0; i < buttons.length; i++) {
+      // buttons[i].addEventListener("click", function () {
+      //   document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+      // });
+      // }
+      // 相当于，let定义的变量具有块级作用域
+      // // ES6 ===============
+      // {
+      //   let i = 0;
+      //   buttons[i].addEventListener("click", function () {
+      //     document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+      //   });
+      // }
+      // {
+      //   let i = 1;
+      //   buttons[i].addEventListener("click", function () {
+      //     document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+      //   });
+      // }
+      // {
+      //   let i = 2;
+      //   buttons[i].addEventListener("click", function () {
+      //     document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+      //   });
+      // }
+      // {
+      //   let i = 3;
+      //   buttons[i].addEventListener("click", function () {
+      //     document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+      //   });
+      // }
+
+      // ES5
+      {
+        var i = 0;
+        buttons[i].addEventListener("click", function () {
+          document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+        });
+      }
+      {
+        i = 1;
+        buttons[i].addEventListener("click", function () {
+          document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+        });
+      }
+      {
+        i = 2;
+        buttons[i].addEventListener("click", function () {
+          document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+        });
+      }
+      {
+        i = 3;
+        buttons[i].addEventListener("click", function () {
+          document.getElementsByClassName("info")[0].innerHTML = "触发按钮" + i;
+        });
+      }
+
+      // });
+      // }
+      // const vue = new Vue({
+      //   el: "#app",
+      //   data: {
+      //     message: "张哲",
+      //   },
+      // });
+    </script>
+  </body>
+</html>

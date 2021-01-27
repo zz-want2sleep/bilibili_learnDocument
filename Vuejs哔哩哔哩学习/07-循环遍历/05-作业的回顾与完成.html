@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+<style>
+  .active{
+    color:  red;
+  }
+</style>
+<div id="app">
+<!-- 使用一个变量记录状态，状态通过事件监听来动态更改，然后通过判断currentIndex是否等于当前点击的li的index来进行动态绑定class -->
+<ul>
+  <li v-for="(item,index) in movies" :class="{active:currentIndex===index}"
+  @click="liClick(index)"
+  >{{index}}:{{item}}</li>
+</ul>
+
+</div>
+
+<script>
+const vue = new Vue({
+el: "#app",
+ data: {
+  message: "张哲",
+  currentIndex: 0,
+  movies: ['海王','海贼王','加勒比海盗','海尔兄弟']
+ },
+ methods:{
+   liClick(idx){
+     this.currentIndex = idx;
+   }
+ }
+ });
+ </script>
+</body>
+</html>

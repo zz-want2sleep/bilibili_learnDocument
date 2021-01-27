@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+	  <!-- 绑定后台传过来的id -->
+        <li v-for="(item,index) in foods" :key="item.id">{{index}}---{{item}}</li>
+		        <!-- <li v-for="(item,index) in foods" :key="index">{{item}}</li> -->
+
+      </ul>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          foods: ["包子", "馒头", "威化饼干", "梳打饼干"],
+        },
+      });
+    </script>
+  </body>
+</html>

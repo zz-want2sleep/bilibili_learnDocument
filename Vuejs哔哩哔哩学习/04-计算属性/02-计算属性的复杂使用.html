@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>总价格:{{totalPrice}}</h2>
+      <h2>总价格:{{totalPrice}}</h2>
+      <h2>总价格:{{totalPrice}}</h2>
+      <h2>总价格:{{totalPrice}}</h2>
+      <h2>总价格:{{totalMovies}}</h2>
+      <h2>总价格:{{totalMovies}}</h2>
+      <h2>总价格:{{totalMovies}}</h2>
+      <h2>总价格:{{getTotalMovies()}}</h2>
+      <h2>总价格:{{getTotalMovies()}}</h2>
+      <h2>总价格:{{getTotalMovies()}}</h2>
+      <h2>总价格:{{getTotalMovies()}}</h2>
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          books: [
+            { id: 10, name: "java入门", price: 58 },
+            { id: 11, name: "python入门", price: 50 },
+            { id: 12, name: "JavaScript入门", price: 48 },
+            { id: 13, name: "Vue入门", price: 79 },
+            { id: 14, name: "node入门", price: 93 },
+            { id: 15, name: "webpack入门", price: 48 },
+          ],
+          movies: [
+            "海王",
+            "星际迷航",
+            "猫和老鼠",
+            "西游记",
+            "大话西游",
+            "聊斋志异",
+            "葫芦娃",
+            "洛洛历险记",
+            "万万没想到",
+            "敖厂长的养鸡场",
+            "海绵宝宝",
+            "海上钢琴师",
+            "恶灵骑士",
+            "恶灵骑士2",
+            "黑夜传说",
+            "黑衣人",
+            "黑衣人2",
+            "黑衣人3",
+            "军火之王",
+            "惊天魔盗团",
+            "惊天魔盗团2",
+            "复仇者联盟",
+            "超人·钢铁之躯",
+            "超人大战蝙蝠侠",
+            "蝙蝠侠·黑夜骑士",
+            "神奇女侠",
+            "疯狂的原始人",
+            "极速蜗牛",
+            "海底总动员",
+            "赛车总动员",
+            "龙骑士",
+            "龙骑士2",
+            "马达加斯加的企鹅",
+            "暮光之城",
+            "武林外传",
+            "武林笑传",
+            "狄仁杰·龙王",
+            "满城遍地黄金甲",
+            "僵尸先生",
+            "猫狗大战",
+            "轮回",
+            "丧尸围城",
+            "僵尸肖恩",
+            "僵尸道长",
+            "僵尸叔叔",
+            "灵异先生",
+            "山村老尸",
+            "人肉叉烧包",
+            "肖胜克的救赎",
+            "三傻大闹宝莱坞",
+            "异形",
+            "铁血战士",
+            "终结者",
+            "终结者2",
+            "终结者3",
+            "终结者4",
+            "火影忍者",
+            "海贼王",
+            "死神",
+            "死神永生",
+            "流浪星球",
+            "哥斯拉",
+            "大白鲨",
+            "妖精的尾巴",
+            "黑色五叶草",
+            "全职猎人",
+            "史上最强弟子谦一",
+            "十字架与吸血鬼",
+            "AngelBeats天使的心跳",
+            "青空",
+            "虫师",
+            "夏日友人账",
+            "钢之炼金师",
+            "刀剑神域",
+            "overLord",
+            "罪恶王冠",
+            "闪电侠",
+            "青蜂侠",
+            "蜘蛛侠",
+            "蜘蛛侠2",
+            "猪猪侠",
+            "猪猪侠2",
+            "猪猪侠3",
+            "喜羊羊与灰太狼",
+            "邋遢大王",
+            "银魂",
+            "天地无用",
+            "天地无用2",
+            "异世界的圣机士",
+            "出包王女",
+            "出包王女2",
+            "天降之物",
+            "天降之物2",
+            "亲吻姐姐",
+            "笨蛋召唤测试兽",
+            "路人女主角",
+            "旋风管家",
+            "宠物小精灵",
+            "数码宝贝",
+            "七龙珠",
+            "东京食飱鬼",
+            "进击的巨人",
+            "钢铁城的卡巴内尔",
+            "瑞克与莫提",
+            "fate/命运之夜",
+            "中华小当家",
+            "食戟之灵",
+            "和歌子酒",
+            "面包王",
+            "日在校园",
+            "妖精的旋律",
+            "守护甜心",
+            "库洛牌",
+            "铁甲小宝",
+            "假面骑士古加",
+            "假面骑士OOO",
+            "假面骑士Decade",
+            "迪迦奥特曼",
+            "盖亚奥特曼",
+            "赛文奥特曼",
+            "艾斯奥特曼",
+            "超人力霸王",
+            "雷欧奥特曼",
+            "假面骑士Black",
+            "赛文奥特曼X",
+            "这个是僵尸吗",
+            "明日的明一",
+            "功夫熊猫",
+            "功夫熊猫2",
+            "超人特工队",
+            "超人学院",
+            "金刚狼",
+          ],
+        },
+        methods: {
+          getTotalMovies: function () {
+            console.log("methods取值");
+            let result = "";
+            for (let movie of this.movies) {
+              result += movie;
+            }
+            return result;
+          },
+        },
+        computed: {
+          totalPrice: function () {
+            console.log("computed取值");
+
+            let result = 0;
+            // for (let book of this.books) {
+            //   result += book.price;
+            // // }
+            // for (let i = 0; i < this.books.length; i++) {
+            //   result += this.books[i].price;
+            // }
+            for (let id in this.books) {
+              result += this.books[id].price;
+            }
+            return result;
+          },
+          totalMovies: function () {
+            let result = "";
+            for (let movie of this.movies) {
+              result += movie;
+            }
+            return result;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

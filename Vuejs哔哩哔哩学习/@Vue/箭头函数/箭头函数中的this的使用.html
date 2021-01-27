@@ -1,0 +1,48 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-09-20 22:40:30
+ * @LastEditTime: 2020-09-20 22:55:31
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \哔哩哔哩学习文档\Vuejs哔哩哔哩学习\@Vue\箭头函数\箭头函数中的this的使用.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //一般在传递参数时使用箭头函数
+        // setTimeout(function(){
+        //     console.log(this)
+        // }, 1000)
+        // setTimeout(() => {}, 1000)
+        // const obj = {
+        //     aaa() {
+        //         console.log(this)
+        //     }
+        // }
+        //问题： 箭头函数中的this是如何查找的
+        //答案：向外层作用域中，一层层查找this，直到有this的定义
+        const obj = {
+            aaa() {
+                setTimeout(function() {
+                    console.log(this);
+                }, 1000)
+                // this = window
+                setTimeout( ()=> console.log(this))
+                //this = obj
+            }
+    }
+    setTimeout(function(){
+                console.log(this)
+            }, 10000)//window = this
+    setTimeout(() =>
+        console.log(this), 10000)//window = this
+obj.aaa();
+    </script>
+</body>
+</html>

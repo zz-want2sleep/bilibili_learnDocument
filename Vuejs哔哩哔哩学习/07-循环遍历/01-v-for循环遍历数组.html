@@ -1,0 +1,39 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-19 15:19:53
+ * @LastEditTime: 2020-09-02 16:25:55
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \Vuejs哔哩哔哩学习\07-循环遍历\01-v-for循环遍历数组.html
+-->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<!--可以包含索引值index,参数名称可以自己取，顺序严格要求value值放在最前面 -->
+<h2>{{message}}</h2>
+<ul>
+  <li v-for="item in names">{{item}}</li>
+</ul>
+<ul>
+  <li v-for="(item,index) in names">{{index+1}}:{{item}}</li>
+</ul>
+</div>
+
+<script>
+const vue = new Vue({
+el: "#app",
+ data: {
+  message: "张哲",
+  names: ['why','hello','zhanghze','member','arry']
+ },
+ });
+ </script>
+</body>
+</html>

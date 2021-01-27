@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<!-- 父组件中使用子组件，并声明slot-scope属性，目的是获取子组件中的pLanguages -->
+  <cpn>
+    <template slot-scope="slot">
+      <!-- <span v-for="item in slot.data">{{item}} - </span> -->
+      <!-- 子组件中的slot插槽绑定的:data不是定死的，可以自定义为:abc，自定义完后需要在父组件中使用时则用slot.abc即可。 -->
+      <span>{{slot.data.join(' - ')}}</span>
+    </template>
+  </cpn>
+</div>
+<template id="cpn">
+  <div>
+    <!-- 子组件中绑定data -->
+    <slot :data="pLanguages"></slot>
+    <ul>
+      <li v-for="item in pLanguages">{{item}}</li>
+    </ul>
+  </div>
+</template>
+<script>
+const vue = new Vue({
+el: "#app",
+ data: {
+  message: "张哲",
+ },
+components: {
+    "cpn":{
+    template: "#cpn",
+    data(){
+      return {
+        pLanguages: ['JavaScript','C++','C#','Java','Python','Go','Swift']
+      }
+    }
+  }
+}
+ });
+ </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{number}}</h2>
+      <!-- <button v-on:click="number++">+</button>
+      <button v-on:click="number--">-</button> -->
+      <!-- <button @click="increment()">
+        +
+      </button>
+      <button @click="decrement()">
+        -
+      </button> -->
+      <button @click="increment">
+        +
+      </button>
+      <button @click="decrement">
+        -
+      </button>
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          number: 1,
+        },
+        methods: {
+          increment() {
+            this.number++;
+          },
+          decrement() {
+            this.number--;
+          },
+        },
+        computed: {
+          increment() {
+            this.number++;
+          },
+          decrement() {
+            this.number--;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

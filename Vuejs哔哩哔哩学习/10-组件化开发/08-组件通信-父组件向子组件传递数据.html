@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+<!-- 注意需要使用v-bind对子组件的props属性的值进行绑定，不然传递过去的数据只是个字符串 -->
+<div id="app">
+<cpn :cmovies="movies" :ctitle="title"></cpn>
+</div>
+<template id="cpn">
+    <div>
+        <h2>{{ctitle}}</h2>
+        <ul>
+            <li v-for="item in cmovies">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+</template>
+<script>
+    // 父组件向子组件传递数据
+Vue.component('cpn',{
+    template: '#cpn',
+    // 首先是通过数组传值
+    // props: ['ctitle','cmovies'],
+    // props:{
+    //     // 默认类型限制
+    //     ctitle: String,
+    //     cmovies: Array
+    // }
+    props: {
+        ctitle:{
+            type: String,
+            required: true,
+            default: 'aaa'
+        },
+        cmovies:{
+            type: Array,
+            required: true,
+            default(){//需要使用一个工厂函数来返回  对象或者数组
+                return [];
+            }
+        }
+    }
+
+})
+const vue = new Vue({
+el: "#app",
+ data: {
+  title: "这是一个标题",
+  movies: ['武林','江湖','仇杀','退隐']
+ },
+ });
+ </script>
+</body>
+</html>

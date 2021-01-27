@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 需要考虑内部是否存在对计算属性的赋值（调用set方法） -->
+      <h2>{{fullName}}</h2>
+      <!-- <h2>{{fullName="张 哲"}}</h2> -->
+      <h2>{{fullName}}</h2>
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          firstName: "zhe",
+          lastName: "zhang",
+          foods: ["饼干"],
+        },
+        methods: {},
+        //  完整的计算属性本质上value是一个对象，里面放了两个方法，分别是set和get方法,但是平时我们很少用到set方法，所以vue帮我们写成了语法糖，就只在value部分协商get方法部分，而不去写set部分，当然我们也可以完整的对象格式。通过改变计算属性，我们也可以更改与之关联的vue的data对象属性
+        // 和java语法不同，我们不需要显式的去调用计算属性value中的方法，不能直接获取，而是通过赋值的形式去调用set方法。
+        // 注意计算属性不认识getter和setter只认识set和get
+        computed: {
+          fullName: {
+            set: function (newFullName) {
+              // 通过简单的split分割字符串获得一个数组
+              let names = newFullName.split(" ");
+              this.firstName = names[0];
+              this.lastName = names[1];
+            },
+            get: function () {
+              return this.firstName + " " + this.lastName;
+            },
+          },
+        },
+      });
+      //判断数据类型
+      console.log(Object.prototype.toString.call(vue.foods));
+      console.log(vue.$data.foods.toString());
+    </script>
+  </body>
+</html>

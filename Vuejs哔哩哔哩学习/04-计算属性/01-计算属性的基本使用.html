@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{lastName+ " " + firstName}}</h2>
+      <h2>{{lastName}} {{firstName}}</h2>
+      <h2>{{getFullName()}}</h2>
+      <!-- 这样显示不是十分的规范，无论是使用mustache语法进行拼接（太长），还是使用methods方法进行返回（多了个（）小括号） -->
+      <!-- computed属性，对data数据进行规范性的返回，实际是还是个函数，只是被做成了语法糖来使用，使别人阅读起来一目了然 -->
+      <!-- 因为是计算“属性”所以名称最好是     “名词” -->
+      <h2>{{fullName}}</h2>
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          firstName: "zhe",
+          lastName: "zhang",
+        },
+        computed: {
+          fullName: function () {
+            return this.lastName + " " + this.firstName;
+          },
+        },
+        methods: {
+          getFullName: function () {
+            return this.lastName + " " + this.firstName;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

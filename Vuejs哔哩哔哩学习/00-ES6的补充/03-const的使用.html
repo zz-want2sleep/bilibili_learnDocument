@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{message}}</h2>
+    </div>
+
+    <script>
+      // 引用的标识符其实是指向的对象在内存中的地址
+      // 1、首先被const进行修饰的标识符是不能直接修改指向的内存地址
+      // 2、其次使用const对标识符进行修饰时必须同时赋值，也就是必须初始化，不然会报错
+      // 3、最后const修饰的标识符如果是一个包含了很多属性的对象，其实是可以进行该内存空间内各个属性的修改的。例如vue的实例化，new一个 Vue（{}），用const来修饰这个实例，难道就不能修改内部的属性了吗？其实是可以的，不然数据都不能响应式地进行变更了。
+
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+        },
+      });
+    </script>
+  </body>
+</html>

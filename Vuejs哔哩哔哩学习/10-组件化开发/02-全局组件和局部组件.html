@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+
+
+</div>
+<div id="app2">
+    <cpn></cpn>
+</div>
+<script>
+//全局组件（可以在多个Vue的实例中使用）
+const cpnC= Vue.extend({
+    template: `
+        <div>
+            <h2>今天周五</h2>
+            哈哈哈哈哈哈明天休息
+        </div>
+    `
+});
+//注册组件（全局组件，可以在多个Vue实例中使用）
+Vue.component('cpn',cpnC);
+
+const vue = new Vue({
+el: "#app",
+ data: {
+  message: "张哲",
+ },
+ components: {
+     cpn: cpnC,
+ }
+ });
+ const vue1 = new Vue({
+     el: '#app2'
+ })
+ </script>
+</body>
+</html>

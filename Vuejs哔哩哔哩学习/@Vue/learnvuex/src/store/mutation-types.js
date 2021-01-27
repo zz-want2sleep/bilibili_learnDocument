@@ -1,0 +1,6 @@
+export const INCREMENT = 'increment'
+export const REDUCE = 'reduce'
+export const ADDCOUNT = 'addCount'
+export const ADDSTU = 'addStu'
+export const ADDPROP = 'addProp'
+export const DELETEPROP = 'deleteProp'

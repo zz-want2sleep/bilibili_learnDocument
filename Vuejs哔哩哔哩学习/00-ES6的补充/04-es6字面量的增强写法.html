@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      // es6之前的对象字面量写法
+      var name = "zhang_zhe";
+      var age = 12;
+      var birth = "2020.7.8";
+      var mod = { name: name, age: age, birth: birth };
+      console.log(mod);
+      // es6之后的对象字面量写法
+      let aname = "zhang_shan";
+      let aage = 18;
+      let abirth = "2020.7.8";
+
+      const person = {
+        aname,
+        aage,
+        abirth,
+      };
+      console.log(person);
+
+      // es6之前的在对象自变量中定义函数的写法
+      var fc = {
+        test: function () {
+          // todo;
+        },
+        angular: function () {
+          // todo;
+        },
+      };
+      console.log(fc);
+      // es6对象字面量定义函数写法
+      const func = {
+        test() {
+          // todo;
+        },
+        angular() {
+          // todo;
+        },
+      };
+      console.log(func);
+    </script>
+  </body>
+</html>

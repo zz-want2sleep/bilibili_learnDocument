@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>首先v-on绑定事件时，先不传参数</h2>
+      <button @click="getArg">123</button>
+      <!-- 其次v-on绑定事件时，不传参数，但是方法本身需要一个参数时，
+      Vue会自动将浏览器生成的一个事件对象event当做参数传入到方法。
+      -->
+      <button @click="getArg1">123</button>
+      <!-- 然后当指定了参数时，同时我们需要event参数 -->
+      <button @click="getArg2(123,321)">123</button>
+      <!-- 记住除了数字，其余不加上单引号的一概视为  变量
+      最后如果想要手动传入事件对象event 使用  $event  即可  -->
+      <button @click="getArg3(123,321,$event)">123</button>
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+        },
+        methods: {
+          getArg() {
+            console.log(123);
+          },
+          getArg1(event) {
+            console.log(event);
+          },
+          getArg2(abc, cba) {
+            console.log(abc + cba);
+          },
+          getArg3(abc, cba, event) {
+            console.log(abc + cba);
+            console.log(event);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

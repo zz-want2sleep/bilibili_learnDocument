@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 注意到当用户输入值后，再点击切换按钮时，先前输入的值依然存在，这是因为vue的底层原理，virtual DOM的缘故，VUE为了提高新能，会尽量避免重新创建新的元素，能复用的尽量复用，如当前例子中，条件判断后，只有一个存在，所以会在内存中的virtual DOM中查寻是否有可复用的DOM元素，如果有就直接复用（用户输入的值也会被复用），复用时会更改DOM的属性（type id name等等）-->
+      <!-- 当然如果想要用户输入的值不被复用，可以使用key进行唯一标识，这样vue就不会复用DOM元素，而是选择创建一个新的DOM元素，这样用户输入的值也不会被复用了。 -->
+      <span v-if="isShow">
+        <label for="email">邮箱登录：</label>
+        <input type="email" id="email" placeholder="用户邮箱" key="email" />
+      </span>
+      <span v-else>
+        <label for="username">账号登录：</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="用户账号"
+          key="username"
+        />
+      </span>
+      <button @click="isShow = !isShow;">切换登录</button>
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+          isShow: true,
+        },
+      });
+    </script>
+  </body>
+</html>

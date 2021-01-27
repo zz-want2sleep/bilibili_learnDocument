@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<h2>{{number1}}</h2>
+<h2>{{number2}}</h2>
+<cpn :number1="number1" :number2="number2" @emit-num1="changeNum1" @emit-num2="changeNum2"></cpn>
+</div>
+<template id='cpn'>
+    <div>
+        <!-- v-model不要直接绑定props属性(props属性应该是由父组件传递给子组件的值，不应该在子组件发生变化)，而应该使用data属性 -->
+        <h2>{{myNumber1}}</h2>
+        <!-- <input type="text" v-model="myNumber1" @input="clickNumber1">使用input事件监听 -->
+        <!-- 使用watch监听data属性  -->
+        <input type="text" :value="myNumber1" @input="myNumber1= $event.target.value;">
+        <h2>{{myNumber2}}</h2>
+        <!-- <input type="text" v-model="myNumber2" @input="clickNumber2">使用input事件监听 -->
+        <input type="text" :value="myNumber2" @input="myNumber2= $event.target.value;">
+    </div>
+</template>
+<script>
+const cpn = {
+    template: '#cpn',
+    data(){
+        return {
+            myNumber1: this.number1,
+            myNumber2: this.number2
+        }
+    },
+    props: ['number1', 'number2'],
+    methods: {
+        clickNumber1(e){
+            this.myNumber1 = e.target.value;
+            this.myNumber2 = this.myNumber1 * 100;
+            this.$emit('emit-num1',this.myNumber1);
+        },
+        clickNumber2(e){
+            this.myNumber2 = e.target.value;
+            this.myNumber1 = this.myNumber2 / 100;
+            this.$emit('emit-num2',this.myNumber2);
+        }
+    },
+    // 不使用@input事件去监听，而是使用watch去监听data中属性值的变化
+    watch: {
+        myNumber1(newValue,oldValue){
+            this.myNumber1 = newValue;
+            this.myNumber2 = this.myNumber1 * 100;
+            this.$emit('emit-num1',this.myNumber1);
+        },
+        myNumber2(newValue,oldValue){
+            this.myNumber2 = newValue;
+            this.myNumber1 = this.myNumber2 / 100;
+            this.$emit('emit-num2',this.myNumber2);
+        }
+    }
+}
+const vue = new Vue({
+el: "#app",
+data: {
+    message: "张哲",
+    number1: 1,
+    number2: 2,
+},
+components: {
+    cpn
+},
+methods: {
+    changeNum1(num){
+        this.number1 = num;
+    },
+    changeNum2(num){
+        this.number2 = num;
+    }
+}
+});
+ </script>
+</body>
+</html>

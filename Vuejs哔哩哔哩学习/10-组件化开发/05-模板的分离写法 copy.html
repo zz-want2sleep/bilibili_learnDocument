@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<cpn></cpn>
+</div>
+<!-- 第一种模板分离写法script的标签type="text/x-template" -->
+<!-- <script type="text/x-template" id="cpn">
+<div>
+呵呵呵，完美世界
+</div>
+</script> -->
+<!-- 第二种模板分离写法template标签 -->
+<template id="cpn">
+    <div>
+    呵呵呵，完美世界
+    </div>
+</template>
+<script>
+Vue.component('cpn',{template: '#cpn'});
+const vue = new Vue({
+el: "#app",
+data: {
+message: "张哲",
+},
+components: {
+//  cpn: {template: '#cpn'}
+}
+});
+ </script>
+</body>
+</html>

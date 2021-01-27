@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <style>
+      .active {
+        color: red;
+      }
+      .normal {
+        font-size: 50px;
+      }
+    </style>
+    <div id="app">
+      <!-- 关键的区别在�? vue为计算属性提供了缓存机制，与之关联的数据不发生改变，就只会从缓存中，得到先前执行的get后得到的�? -->
+      <!-- 反之methods方法则是多次重复执行，假如碰上了for循环，调用几次method方法，就得循环几次，性能就会变差，所以在查询不经常变动的数据时，多使用computed而不是methods -->
+      <h2>
+        {{firstName+ " " +lastName}}
+      </h2>
+      <h2>
+        <!-- 一定要在mustache语法或v-xx指令中使用方法，记得加上小括�? -->
+        <button @click="getFullName"></button>
+        {{getFullName()}}
+      </h2>
+      <h2>
+        <!-- 一定要在mustache语法或v-xx指令中使用方法，记得加上小括�? -->
+        <button @click="getFullName"></button>
+        {{getFullName()}}
+      </h2>
+      <h2>
+        <!-- 一定要在mustache语法或v-xx指令中使用方法，记得加上小括�? -->
+        <button @click="getFullName"></button>
+        {{getFullName()}}
+      </h2>
+      <h2>
+        {{fullName}}
+      </h2>
+      <h2>
+        {{fullName}}
+      </h2>
+      <h2>
+        {{fullName}}
+      </h2>
+      <h2>
+        {{fullName}}
+      </h2>
+      <h2>
+        {{fullName}}
+      </h2>
+      <ul>
+        <li
+          class="normal"
+          :class="{active:isActive===index}"
+          v-for="(item,index) in foods"
+          :key="index"
+          @click="changeColor(index)"
+        >
+          {{index + "-----" + item}}
+        </li>
+        <li
+          class="normal"
+          :class="{active:isActive===item.id}"
+          v-for="item in comic"
+          :key="item.id"
+          @click="changeColor(item.id)"
+        >
+          {{item.id + "-----" + item.content}}
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          isActive: -1,
+          firstName: "hu",
+          lastName: "yue hua",
+          foods: [
+            "西瓜",
+            "苹果",
+            "红牛",
+            "西红�?",
+            "葡萄",
+            "梨子",
+            "荔枝",
+            "李子",
+            "威化饼干",
+            "苏打饼干",
+            "玉米",
+            "火鸡�?",
+            "烤牛�?",
+            "炒猪腰子",
+            "猪拱�?",
+            "北京烤鸭",
+          ],
+          comic: [
+            { id: 101, content: "火影忍�?" },
+            { id: 102, content: "柯南" },
+            { id: 103, content: "死神" },
+            { id: 104, content: "海贼�?" },
+            { id: 105, content: "银魂" },
+            { id: 106, content: "妖精的尾�?" },
+          ],
+        },
+        // 后台会有id生成器，全局唯一
+
+        methods: {
+          getFullName: function () {
+            console.log("执行getFullName方法");
+
+            return this.firstName + " " + this.lastName;
+          },
+          changeColor: function (idx) {
+            this.isActive = idx;
+          },
+        },
+        computed: {
+          fullName: function () {
+            console.log("执行fullName计算属性get方法");
+            return this.firstName + " " + this.lastName;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

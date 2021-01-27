@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+<!-- 最好的封装方式就是将共性抽取到组件中，将不同暴露为插槽，一旦我们预留了插槽，我们就可以让使用者根据自己的需求，决定插槽中插入什么内容，是搜索框，还是文字，还是菜单，还是调用着自己来决定。 -->
+
+<!-- 插槽的使得组件具有扩展性，以前的组件是没有扩展性的（内部直接写死的）。 -->
+<div id="app">
+<cpn>
+<button>按钮</button>
+</cpn>
+<cpn>
+    <span>span</span>
+</cpn>
+<cpn>
+    <i>^_^</i>
+</cpn>
+<cpn>
+    <span>你好呀！</span>
+    <i>还好啦！</i>
+    <button>那就好！</button>
+</cpn>
+<cpn>
+</cpn>
+<cpn>
+</cpn>
+<!-- 插槽也就是预留了一个空间,可以提供一个默认值，一个插槽不仅仅可以替换一个值，它可以同时替换多个值 -->
+<!-- 举个例子，移动端H5的导航栏基本上是封装成一个组件，为避免重复封装组件，使用slot插槽提供了预留的空间，为页面跳转后动态更改导航栏组件提供了强大的可扩展性。 -->
+</div>
+<template id="cpn">
+    <div>
+        <h2>我是组件</h2>
+        <p>我是组件，哈哈哈</p>
+        <slot><button>按钮</button></slot>
+    </div>
+</template>
+<script>
+const vue = new Vue({
+el: "#app",
+ data: {
+  message: "张哲",
+ },
+ });
+ </script>
+</body>
+</html>

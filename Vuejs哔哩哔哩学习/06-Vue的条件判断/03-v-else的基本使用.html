@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>{{judge}}</div>
+      <!-- <div v-if="score>90">优秀</div>
+      <div v-else-if="score>80">良好</div>
+      <div v-else-if="score>60">合格</div>
+      <div v-else>不合格</div> -->
+      <!-- 通常不会写上很长的v-if和v-else-if的判断语句，常用的是v-if和v-else的判断语句，过长的条件判断，通常交给”计算属性“来解决。 -->
+    </div>
+    <!-- v-if相当于CSS中的display:none； -->
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+          score: 88,
+        },
+        computed: {
+          judge() {
+            if (this.score > 90) {
+              return "优秀";
+            } else if (this.score > 80) {
+              return "良好";
+            } else if (this.score > 60) {
+              return "合格";
+            } else {
+              return "不合格";
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<!-- 1.调用Vue.extend()方法创建组件构造器 -->
+<!-- 2.调用Vue.component()方法注册组件 -->
+<!-- 3.在Vue的实例的作用范围内使用组件 -->
+<my-cpn></my-cpn>
+<my-cpn></my-cpn>
+<my-cpn></my-cpn>
+</div>
+ 
+<script>
+// 创建组件构造器
+const cpnC = Vue.extend({
+    template: `<div>
+    <h2>我是标题</h2>
+    <p>我是内容,长知识</p>
+    <p>我是内容,长知识</p>
+    </div>`
+});
+// 注册组件
+Vue.component('my-cpn',cpnC); 
+const vue = new Vue({
+el: "#app", 
+ data: {
+  message: "张哲",
+ },
+ });
+ </script>
+</body>
+</html>

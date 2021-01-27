@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <style>
+      .food,
+      ._1234567 {
+        color: red;
+      }
+    </style>
+    <div id="app">
+      <!-- 虽然（数组语法）用的比较少 -->
+      <!-- 不是动态赋值，可能应用场景，从服务器拉下来的数据，以变量的形式在数组中进行使用，加上''和不加是区分字符串和变量的关键 -->
+      <!-- 同样也可以通过methods或computed的方式进行简化 -->
+      <h2 :class="['active','food','zz']" class="movies">{{message}}</h2>
+      <h2 :class="[active,food,zz]" class="movies">{{message}}</h2>
+      <h2 :class="getClass()" class="movies">{{message}}</h2>
+      <!-- <button @click="isClass">"改变样式"</button>
+      这东西不好用v-bind -->
+    </div>
+
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+          active: "zzzzzzzzzzzz",
+          food: "_1234567",
+          zz: "qqqoooppp",
+        },
+        methods: {
+          getClass: function () {
+            return [this.active, this.food, this.zz];
+          },
+          // isClass: function () {
+          //   this.active = !this.active;
+          //   this.food = !this.food;
+          //   this.zz = !this.zz;
+          // },
+        },
+      });
+    </script>
+  </body>
+</html>

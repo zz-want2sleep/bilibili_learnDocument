@@ -1,0 +1,37 @@
+<script>
+    //正常情况下，我们不需要使用promise，通常使用Promise进行优雅的异步操作，例如“网络请求”
+    //1.一般情况下有异步操作时，使用Promise对这个异步操作进行封装，
+    //2.new -> 构造函数（1.保存一些状态信息。 2.执行传入的回调函数）
+    //3.在执行传入的回调函数时，会传入两个参数，resolve和reject
+
+    //  new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //                 resolve('data')
+    //         }, 1000)
+    //  }).then((data) => {
+    //         console.log(data)
+    //         return Promise.resolve(data + '123')
+    //  }).then((data) => {
+    //      console.log(data)
+    //      return (data + '456') // 相当于 return new Promise(resolve => resolve('success')) 也相当于 return Promise.resolve('success')
+    //  }).then((data) => {
+    //      throw (data + 'error')
+    //     //  相当于 return new Promise(reject => reject('error')) 也相当于 return Promise.reject('error')
+    //  }).catch(error => console.error(error))
+
+    //当有两个请求同时需要满足时才能进行下一个操作,可以同时拿到这两个请求的值（一个数组），这个时候我们就应该使用Promise.all([])需要传入一个可迭代对象
+    Promise.all([
+        new Promise((resolve, reject) => {
+            setTimeout(()=> {
+                resolve('Vue.js')
+            }, 1000)
+        }),
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('TypeScript')
+            }, 1000)
+        })
+    ]).then( results => {
+        console.log(results)
+    })
+</script>

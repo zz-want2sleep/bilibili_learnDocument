@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+<ul @click="triggerBtn()">
+  <li v-for="item in letters" :key="item">{{item}}</li>
+</ul>
+</div>
+
+<script>
+const vue = new Vue({
+el: "#app",
+ data: {
+    letters:['B','A','C','D','E']
+},
+  methods:{
+    triggerBtn(){
+      // this.letters.splice();//可以进行删除、增添、替换（实际上就是删除后再添加）操作,重点在于第二个参数。为零则可以添加新元素，如果不为0可以指定第一个参数start和第二个参数的数目进行删除或替换。
+      // this.letters.pop();
+      // 删除数组最后一个元素
+      // this.letters.shift();
+      // 删除数组第一个元素
+      // this.letters.push();
+      // 添加元素到数组末尾
+      // this.letters.unshift();
+      // 添加元素到数组开头
+      // this.letters.reverse();
+      // 反转数组排序
+      this.letters.sort();
+      // 对数组进行排序，可以传入函数
+
+      // vue对于利用数组索引进行修改value的操作（letters[1]='aaaa'）是不支持响应式的，可以通过splice进行替换操作或者Vue自带的set(要修改的对象,索引值,修改的对象)方法来进行更改。
+
+
+    }
+  }
+ });
+ </script>
+</body>
+</html>

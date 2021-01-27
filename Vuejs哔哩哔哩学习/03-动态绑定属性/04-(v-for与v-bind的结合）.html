@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+  </head>
+  <body>
+    <style>
+      .active {
+        color: red;
+      }
+    </style>
+    <div id="app">
+      <!-- 需求：点击列表中的一项，哪一项就变红，其余项目不变。 -->
+      <ul>
+        <!-- v-for是需要遍历哪一个元素就写在哪一个元素上面的 -->
+        <li
+          v-for="(food,index) in foods"
+          :class="{active: active === index ?true:false}"
+          :key="index"
+          @click="isActive(index)"
+        >
+          {{index}}--{{food}}
+        </li>
+      </ul>
+    </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script> -->
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+          active: -1,
+          foods: ["包子", "馒头", "西瓜", "牛排", "火龙果", "口香糖", "面包"],
+        },
+        methods: {
+          isActive: function (index) {
+            this.active = index;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

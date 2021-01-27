@@ -1,0 +1,27 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-12 08:49:59
+ * @LastEditTime: 2020-08-16 20:13:21
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \哔哩哔哩学习文档\Vuejs哔哩哔哩学习\webpack的使用\04-webpack的vue配置\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+    <!-- vue在构建最终发布版本时，会构建两个版本
+    一个叫runtime-only,
+    一个叫runtime-compiler
+    第一个版本代码中，不可以有任何的template（因为这个版本中没有关于template的编译代码，
+    第二个版本可以有template，因为有compiler可以去编译template）-->
+    <div id="app">
+    </div>
+    <script src="./dist/bundle.js"></script>
+</body>
+</html>

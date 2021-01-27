@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2 v-if="false">{{message}}</h2>
+      <h2 v-else-if="!isShow">
+        <div>11</div>
+        <div>21</div>
+        <div>31</div>
+        <div>41</div>
+      </h2>
+    </div>
+    <!-- v-show="false"相当于CSS中的display:none； v-if="false"DOM标签直接不存在-->
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+          isShow: false,
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+body {
+  /* background-color: red; */
+  background: url('../img/back5.jpg');
+}
+[v-cloak] {
+    display: none !important;
+    /* visibility: hidden; */
+  }

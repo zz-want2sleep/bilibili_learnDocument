@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<!-- 类似于v-if和v-show中的key当然，不同的是这里的循环是使用了v-bind绑定,其次是v-if和v-show目的是避免重用DOM元素，而v-for是为了复用DOM。通过绑定唯一标识来进行复用 -->
+<ul>
+  <!-- key的作用是为了高效的更新虚拟DOM -->
+  <li v-for="item in letters" :key="item">{{item}}</li>
+</ul>
+</div>
+
+<script>
+const vue = new Vue({
+el: "#app",
+ data: {
+  message: "张哲",
+ letters: ['A','B','C','D','E'],
+ }
+});
+ </script>
+</body>
+</html>

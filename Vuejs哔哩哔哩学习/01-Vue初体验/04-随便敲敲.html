@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<ul>
+    <li v-for="(item,index) in foods" :key="item">{{index}}---{{item}}</li>
+</ul>
+<button @click="getMessage">弱</button>
+</div>
+
+<script>
+const vue = new Vue({
+el: "#app",
+ data: {
+    foods: ["包子", "馒头", "威化饼干", "梳打饼干"],
+    age: 18,
+ },
+ methods:{
+   getMessage(){
+     console.log("method调用了一次！");
+     return this.message;
+   }
+ },
+ computed:{
+   currentMessage(){
+    console.log("计算属性调用了一次！");
+    return this.message;
+   }
+ }
+ });
+var i = 1;
+for(i; i<=10; i++){
+
+    console.log(i);
+
+// window.onclick = function(e){
+  // console.log(i);
+// }
+}
+ </script>
+</body>
+</html>

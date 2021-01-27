@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>学习vue</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+<cpn1></cpn1>
+<cpn2></cpn2>
+
+</div>
+
+<script>
+//vue2.x以前使用Vue.extend()创建组件构造器，太过于繁琐，所以优化成直接使用Vue.component('xx',``)的全局组件和components: {'xx': {template:``}}的局部组件的语法糖形式
+
+Vue.component(
+    'cpn1',{template: `<div><h2>标题一</h2></div>`}
+);
+const vue = new Vue({
+el: "#app",
+ data: {
+  message: "张哲",
+ },
+ components: {
+    'cpn2': {
+    template: `<div><h2>标题二</h2></div>`}
+ }
+ });
+ </script>
+</body>
+</html>

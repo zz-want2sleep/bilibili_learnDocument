@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>学习vue</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <div @click="btn2click1('div')">
+        <button @click="btn2click1('button')">
+         修饰符 stop阻止事件冒泡
+        </button>
+      </div> -->
+      <div @click="btn2click1('div')">
+        <button @click.stop="btn2click1('button')">
+          stop阻止事件冒泡
+        </button>
+      </div>
+
+      <!-- 修饰符prevent阻止原生事件触发，例如表单提交 -->
+      <form action="wwww.buidu.com">
+        <input type="submit" @click.prevent="btn2click2('submit')" />
+        <!-- 修饰符keyCode|keyAlias键修饰符 -->
+        <input type="text" value="提交" @keyup="btn2click3" />
+        <input type="text" value="提交" @keyup.enter="btn2click3" />
+        <!-- once修饰符只执行一次 -->
+        <input type="button" @click.once="btn2click4" />
+      </form>
+    </div>
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          message: "张哲",
+        },
+        methods: {
+          btn2click1(msg) {
+            console.log(msg);
+          },
+          btn2click2(msg) {
+            console.log("+++++++++++++++++++++" + msg);
+          },
+          btn2click3(msg) {
+            console.log(msg.key);
+          },
+          btn2click4(msg) {
+            console.log(msg);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
